@@ -48,6 +48,11 @@
     <%= f.number_field :overall_contribution, class: "form-control", in: 1...11, :required => true  %>
   </div>
 
+  <div class="field">
+    <%= f.label :exec_secret %><br>
+    <%= f.number_field :exec_secret, class: "form-control", :required => true  %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Give Feedback", :class => 'btn btn-success'  %>
   </div>

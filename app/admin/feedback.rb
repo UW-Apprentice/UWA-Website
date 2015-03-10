@@ -14,5 +14,5 @@ ActiveAdmin.register Feedback do
   #   permitted
   # end
 
-permit_params :receiver, :good_comments, :improvement_comments, :leadership
+permit_params :receiver, :good_comments, :improvement_comments, :leadership, :creativity, :business_sense, :overall_contribution, :presentation_skills
 end

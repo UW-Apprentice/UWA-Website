@@ -550,7 +550,8 @@ class Delegate < ActiveRecord::Base
       weighted_case_pos_score = raw_case_pos_score * @case_pos_weight
 
     # return total_points_by_source_output[peer scores, exec scores, case eval scores, case pos scores]  
-      return total_points_by_source_output = [weighted_peer_score, weighted_exec_score, weighted_case_eval_score, weighted_case_pos_score]
+       total_points_by_source_output = [weighted_peer_score, weighted_exec_score, weighted_case_eval_score, weighted_case_pos_score]
+  return total_points_by_source_output
   end
 
 

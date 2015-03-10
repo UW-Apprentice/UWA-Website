@@ -32,4 +32,6 @@ Rails.application.routes.draw do
     get '/faqs', to: 'info#faq'
 
     get '/stay_tuned', to: 'info#stay_tuned'
+
+    get '/executive_feedback', to: 'feedbacks#exec_feedback'
 end

@@ -2,7 +2,7 @@
 
 <p>
   <strong>Giver:</strong>
-  <%= @feedback.giver %>
+  <%= @feedback.receiver %>
 </p>
 
 <p>
@@ -24,6 +24,3 @@
   <strong>Creativity:</strong>
   <%= @feedback.creativity %>
 </p>
-
-<%= link_to 'Edit', edit_feedback_path(@feedback) %> |
-<%= link_to 'Back', feedbacks_path %>
