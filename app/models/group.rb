@@ -1,3 +1,8 @@
 class Group < ActiveRecord::Base
-	has_and_belongs_to_many :delegates
+
+
+ # Many to many
+  has_many :memberships
+  has_many :delegates, :through => :memberships
+
 end

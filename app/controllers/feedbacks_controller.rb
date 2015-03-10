@@ -1,6 +1,6 @@
 class FeedbacksController < ApplicationController
 before_action :set_feedback, only: [:show, :edit, :update, :destroy]
-before_action :authenticate_executive!, only: [:edit, :index, :update, :destroy]
+before_action :authenticate_executive!, only: [:edit, :update, :destroy]
 
 
  layout "delegate_dashboard"

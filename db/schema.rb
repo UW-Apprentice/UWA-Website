@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150310063841) do
+ActiveRecord::Schema.define(version: 20150310081221) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -172,11 +172,6 @@ ActiveRecord::Schema.define(version: 20150310063841) do
   add_index "delegates", ["email"], name: "index_delegates_on_email", unique: true
   add_index "delegates", ["reset_password_token"], name: "index_delegates_on_reset_password_token", unique: true
 
-  create_table "delegates_groups", id: false, force: true do |t|
-    t.integer "delegate_id"
-    t.integer "group_id"
-  end
-
   create_table "execs", force: true do |t|
     t.string   "exec_name"
     t.string   "team"
@@ -222,6 +217,14 @@ ActiveRecord::Schema.define(version: 20150310063841) do
   create_table "leaderships", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "memberships", force: true do |t|
+    t.integer  "group_id"
+    t.integer  "delegate_id_for_group"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "delegate_id"
   end
 
   create_table "rs_evaluations", force: true do |t|

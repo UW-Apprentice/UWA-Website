@@ -1,39 +1,5 @@
-<!--<h1>Listing feedbacks</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Giver</th>
-      <th>Good comments</th>
-      <th>Improvement comments</th>
-      <th>Leadership</th>
-      <th>Creativity</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @feedbacks.each do |feedback| %>
-      <tr>
-        <td><%= feedback.receiver %></td>
-        <td><%= feedback.good_comments %></td>
-        <td><%= feedback.improvement_comments %></td>
-        <td><%= feedback.leadership %></td>
-        <td><%= feedback.creativity %></td>
-        <td><%= link_to 'Show', feedback %></td>
-        <td><%= link_to 'Edit', edit_feedback_path(feedback) %></td>
-        <td><%= link_to 'Destroy', feedback, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Feedback', new_feedback_path %>
--->
-
-<h1>Your Feedback</h1>
+<div class="container">
+<h1 class="text-center">Your Feedback</h1>
 
 
 <% received_feedback = Feedback.where(:receiver => current_delegate) %>
@@ -43,15 +9,17 @@
     <div class="update-card-body">
       <div class="update-card-body">
       <h6> Good </h6>
-      <p><%= received_feedback.good_comments %></p>
+      <p><%= f.good_comments %></p>
       <hr>
 
       <h6>Needs Improvement </h6>
-      <p><%= received_feedback.improvement_comments %></p>
+      <p><%= f.improvement_comments %></p>
     </div>
     </div>
     <div class="card-action-pellet btn-toolbar pull-right" role="toolbar">
 </div>
 </div>
 
+<span style="padding:10px;"></span>
 <% end %>
+</div>

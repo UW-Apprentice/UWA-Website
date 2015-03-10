@@ -4,8 +4,11 @@ class Delegate < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_and_belongs_to_many :groups
   has_many :feedbacks
+
+  # Many to many
+  has_many :memberships
+  has_many :groups, :through => :memberships
 
   @num_finished_cases = Case.where(:case_sponsor => true).where(:done => true).count 
   
@@ -263,9 +266,10 @@ class Delegate < ActiveRecord::Base
     avg_ps = (avg_exec_ps + avg_peer_ps)/2
     avg_oc = (avg_exec_oc + avg_peer_oc)/2
 
-    return average_delegate_attribute_scores = [avg_l, avg_c, avg_bs, avg_ps, avg_oc]
+    
+     average_delegate_attribute_scores = [avg_l, avg_c, avg_bs, avg_ps, avg_oc]
     # return average_delegate_attribute_scores[avg_leadership, avg_creativity, avg_business_sense, avg_presentation_skills, avg_overall_contributions]
-
+    return average_delegate_attribute_scores
   end
   
   ###############
@@ -337,7 +341,8 @@ class Delegate < ActiveRecord::Base
       end
       avg_o = total_o/completed_cases
 
-      return average_case_eval_scores_output = [avg_im, avg_f, avg_in, avg_p, avg_o]
+       average_case_eval_scores_output = [avg_im, avg_f, avg_in, avg_p, avg_o]
+    return average_case_eval_scores_output
   end
 
   ###############
@@ -448,7 +453,8 @@ class Delegate < ActiveRecord::Base
       temp_delegate.save!
 
       # return total_points_by_source_output[peer scores, exec scores, case eval scores, case pos scores]  
-      return total_points_by_source_output = [weighted_peer_score, weighted_exec_score, weighted_case_eval_score, weighted_case_pos_score]
+       total_points_by_source_output = [weighted_peer_score, weighted_exec_score, weighted_case_eval_score, weighted_case_pos_score]
+    return total_points_by_source_output
   end
 
   ###############

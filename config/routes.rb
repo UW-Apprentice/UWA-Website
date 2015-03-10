@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   resources :cases
 
-  devise_for :delegates
+  devise_for :delegates, controllers: {registrations: 'registrations'}
 
 
   get '/team', to: 'execs#index'

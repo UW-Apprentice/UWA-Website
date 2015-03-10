@@ -50,8 +50,15 @@
                                         <%= fa_icon "diamond 5x" %>
                                     </div>
                                     <div class="col-xs-9 text-right">
+                                        <div class="huge">
 
-                                        <div class="huge">fadsf dfds fdfd</div>
+                                        <% @d_groups = Membership.get_groups(current_delegate.id) %>
+
+                                        <%@d_groups.each do |g| %>
+                                        <%= g.group_name %> |
+
+                                        <% end %>
+                                        </div>
 
                                         <div>Groups</div>
                                     </div>
@@ -185,14 +192,13 @@ $(function(){
         credits: {
       enabled: false
   },
-
         series:[{
             name: "Current",
 
             
             data: [<%= @avg_individual_scores[0] %>, <%= @avg_individual_scores[1] %>, <%= @avg_individual_scores[2] %>, <%= @avg_individual_scores[3] %>,<%= @avg_individual_scores[4] %>]
         }, {name: "Estimation",
- data: [<%= current_delegate.estimated_leadership / @num_finished_cases %>, <%= current_delegate.estimated_creativity / @num_finished_cases %>, <%= current_delegate.estimated_business_sense / @num_finished_cases %>, <%= current_delegate.estimated_presentation_skills / @num_finished_cases%>,<%= current_delegate.estimated_overall_contribution / @num_finished_cases %>]}]
+ data: [<%= current_delegate.estimated_leadership %>, <%= current_delegate.estimated_creativity%>, <%= current_delegate.estimated_business_sense%>, <%= current_delegate.estimated_presentation_skills %>,<%= current_delegate.estimated_overall_contribution %>]}]
 
     });
 
