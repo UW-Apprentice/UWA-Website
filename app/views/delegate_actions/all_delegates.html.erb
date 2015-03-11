@@ -13,7 +13,7 @@
 		<ul class="list-inline">
 			
 
-			<% if d.facebook != nil %>
+			<% if d.facebook != ''%>
 				<li><%= link_to d.facebook, :target => '_blank', method: :put do %>
 				<%= fa_icon "facebook 2x" %>
 				<% end %>
@@ -21,7 +21,7 @@
 				
 
 <% end %>
-<% if d.twitter != nil %>
+<% if d.twitter != '' %>
 				<li><%= link_to d.twitter, :target => '_blank', method: :put do %>
 					<%= fa_icon "twitter 2x" %>
 					<% end %>
@@ -29,7 +29,7 @@
 					
 
 <% end %>
-<% if d.linkedin != nil %>
+<% if d.linkedin != '' %>
 					<li><%= link_to d.linkedin, :target => '_blank', method: :put do %>
 						<%= fa_icon "linkedin 2x" %>
 						<% end %>

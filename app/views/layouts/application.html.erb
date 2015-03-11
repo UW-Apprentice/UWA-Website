@@ -84,12 +84,12 @@
   <%= simple_form_for(:delegate, :url => delegate_session_path) do |f| %>
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, class: 'form-control' %>
+    <%= f.email_field :email, autofocus: true, class: 'form-control', :style => 'padding-left:7px' %>
   </div>
 
   <div class="field">
     <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
+    <%= f.password_field :password, autocomplete: "off", class: 'form-control', :style => 'padding-left:7px' %>
   </div>
 <div class="modal-footer">
   <div class="actions">
@@ -114,11 +114,13 @@
         <div class="modal-body">
               <span style="margin:200px"></span>
 
-      <ul id="filterOptions" class="nav nav-pills" style="margin-left:120px;margin-top:200px">
+      <ul id="filterOptions" class="nav nav-pills" style="margin-left:160px;margin-top:200px">
         <li class="active"><a href="#" class="all">Full Team</a></li>
         <li><a href="#" class="president">Presidents</a></li>
         <li><a href="#" class="marketing">Marketing</a></li>
       </ul>
+             <span style="margin:50px"></span>
+
       <div id="teamHolder">
       <% @execs = Exec.all %>
 

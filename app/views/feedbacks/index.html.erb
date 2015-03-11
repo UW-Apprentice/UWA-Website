@@ -1,9 +1,8 @@
 <div class="container">
-<h1 class="text-center">Your Feedback</h1>
+<h1 class="text-center">Your Received Feedback</h1>
 
 
-<% received_feedback = Feedback.where(:receiver => current_delegate) %>
-
+<% received_feedback = Feedback.where(:receiver => current_delegate.fullname) %>
 <% received_feedback.each do |f| %>
  <div class="block-update-card status">
     <div class="update-card-body">
@@ -19,7 +18,7 @@
     <div class="card-action-pellet btn-toolbar pull-right" role="toolbar">
 </div>
 </div>
-
 <span style="padding:10px;"></span>
+<br>
 <% end %>
 </div>

@@ -11,54 +11,47 @@
     </div>
   <% end %>
 
- <!-- <div class="field">
-    <%= f.label :receiver %><br>
-    <%= f.text_area :receiver, class: "form-control", :required => true %>
-  </div> -->
-
- <div class="field">
+<!-- NOTE: Labels are correct, but where the points are allocated in the db is wrong.  But delegate still get their points !!!!!!!!!! -->
+  <div class="field">
     <%= f.label :receiver %><br>
     <%= select("feedback", "receiver", Delegate.all.collect {|d|
-
-      if d.email != current_delegate.email
-
-     [ d.fullname]
-     end }, {include_blank: 'None'}, class: "form-control")
+     [ d.fullname] }, {include_blank: 'None'}, class: "form-control", :required => true)
 
     %>
-  </div> 
+  </div>
+ <!--
+ <div class="field">
+    <%= f.label "Case Number" %><br>
+    <%= f.number_field :leadership, class: "form-control", in: 1...5, :required => true  %>
+  </div>-->
 
- 
   <div class="field">
-    <%= f.label :good_comments %><br>
-    <%= f.text_area :good_comments, class: "form-control", :required => true %>
-  </div>
-  <div class="field">
-    <%= f.label :improvement_comments %><br>
-    <%= f.text_area :improvement_comments, class: "form-control", :required => true  %>
-  </div>
-  <div class="field">
-    <%= f.label :leadership %><br>
+    <%= f.label :impact %><br>
     <%= f.number_field :leadership, class: "form-control", in: 1...11, :required => true  %>
   </div>
   <div class="field">
-    <%= f.label :creativity %><br>
+    <%= f.label :feasibility %><br>
     <%= f.number_field :creativity, class: "form-control", in: 1...11, :required => true   %>
   </div>
 
   <div class="field">
-    <%= f.label :business_sense %><br>
+    <%= f.label :innovation %><br>
     <%= f.number_field :business_sense, class: "form-control", in: 1...11, :required => true  %>
   </div>
 
   <div class="field">
-    <%= f.label :presentation_skills %><br>
+    <%= f.label :presentation %><br>
     <%= f.number_field :presentation_skills, class: "form-control", in: 1...11, :required => true  %>
   </div>
 
   <div class="field">
-    <%= f.label :overall_contribution %><br>
+    <%= f.label :overall %><br>
     <%= f.number_field :overall_contribution, class: "form-control", in: 1...11, :required => true  %>
+  </div>
+
+  <div class="field">
+    <%= f.label :exec_secret %><br>
+    <%= f.number_field :exec_secret, class: "form-control", :required => true  %>
   </div>
 
   <div class="actions">

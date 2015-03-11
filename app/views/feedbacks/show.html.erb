@@ -1,26 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Giver:</strong>
-  <%= @feedback.receiver %>
-</p>
+<div class="container">
 
-<p>
-  <strong>Good comments:</strong>
-  <%= @feedback.good_comments %>
-</p>
-
-<p>
-  <strong>Improvement comments:</strong>
-  <%= @feedback.improvement_comments %>
-</p>
-
-<p>
-  <strong>Leadership:</strong>
-  <%= @feedback.leadership %>
-</p>
-
-<p>
-  <strong>Creativity:</strong>
-  <%= @feedback.creativity %>
-</p>
+<div class="thanks" style="padding-top:150px;">
+<center>
+<h3>Feedback Given! &nbsp; <%= link_to "Go back", new_feedback_path %></h3>
+<%= fa_icon "check-circle 5x", :style => "color:#2ecc71" %></center>
+</div>
+</div>

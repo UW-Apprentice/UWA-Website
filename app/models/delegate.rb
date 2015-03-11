@@ -572,8 +572,8 @@ class Delegate < ActiveRecord::Base
 	(@num_finished_cases * num_reviewing) - given_feedback
   end
 
-  def self.received_feedback(d_id)
-  	Feedback.where(:receiver => d_id).count
+  def self.received_feedback(delegate)
+  	Feedback.where(:receiver => delegate.fullname).count
   end
 
   # criteria must be a string

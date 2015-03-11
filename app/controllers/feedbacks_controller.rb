@@ -30,27 +30,47 @@ before_action :authenticate_executive!, only: [:edit, :update, :destroy]
     respond_with(@feedback)
   end
 
+  def exec_case_eval
+    @feedback = Feedback.new
+=begin
+    @projected_case_id = Case.where(:case_sponsor => true).where(:done => true).count + 1
+    @receiver = Delegate.where(:email => @feedback.receiver).first.id
+
+    # Leadership = impact, creativity = feasibility, business_sense = innovation, presentation_skills = presentation, overall_contribution = overall
+    Delegate.update_case_eval_scores(@receiver, @projected_case_id, @feedback.leadership, @feedback.creativity, @feedback.business_sense, @feedback.presentation_skills, @feedback.overall_contribution)
+=end
+    respond_with(@feedback)
+
+  end
+
   def edit
   end
 
   def create
 
-    secret_key = 8238
+    secret_key_attributes = 8238
+    secret_key_case = 1111
     @feedback = current_delegate.feedbacks.build(feedback_params)
     @feedback.save
     @projected_case_id = Case.where(:case_sponsor => true).where(:done => true).count + 1
     
 
-    @receiver = Delegate.where(:email => @feedback.receiver).first.id
+    @receiver = Delegate.where(:fullname => @feedback.receiver).first.id
 
     eval_type = 1 # Peer feedback
 
-    if (@feedback.exec_secret == secret_key)
+    if (@feedback.exec_secret == secret_key_attributes)
       eval_type = 2 # Exec feedback
-    end
-    Delegate.update_peer_or_exec_scores(eval_type, @projected_case_id, @receiver, @feedback.leadership, @feedback.creativity, @feedback.business_sense, @feedback.presentation_skills, @feedback.overall_contribution )
-    
+      Delegate.update_peer_or_exec_scores(2, @projected_case_id, @receiver, @feedback.leadership, @feedback.creativity, @feedback.business_sense, @feedback.presentation_skills, @feedback.overall_contribution )
 
+    elsif (@feedback.exec_secret == secret_key_case)
+      # Leadership = impact, creativity = feasibility, business_sense = innovation, presentation_skills = presentation, overall_contribution = overall
+    Delegate.update_case_eval_scores(@receiver, @projected_case_id, @feedback.leadership, @feedback.creativity, @feedback.business_sense, @feedback.presentation_skills, @feedback.overall_contribution)
+
+  else
+    Delegate.update_peer_or_exec_scores(1, @projected_case_id, @receiver, @feedback.leadership, @feedback.creativity, @feedback.business_sense, @feedback.presentation_skills, @feedback.overall_contribution )
+    end
+    
     respond_with(@feedback)
   end
 

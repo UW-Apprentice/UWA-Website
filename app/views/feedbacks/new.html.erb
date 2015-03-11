@@ -1,6 +1,20 @@
 <div class="container">
-<h1 class="text-center">Submit Feedback</h1>
 
+<div class="col-lg-12">
+<div class="col-md-2">
+<%= link_to :back do %>
+<%= fa_icon "arrow-left 2x", :style => 'margin-top:30px'%>
+<p style="display:inline;">Back</p>
+<% end %>
+</div>
+<div class="col-md-8">
+<center><h1 style="margin-left:20px;">Submit Feedback</h1></center>
+</div>
+
+<div class="col-md-2" style="margin-top:30px">
+<p style="display:inline">Pending Feedback: <%= Delegate.pending_feedback(current_delegate) %></p>
+</div>
+</div>
 <%= render 'form' %>
 
 <%= link_to 'Back', feedbacks_path %>

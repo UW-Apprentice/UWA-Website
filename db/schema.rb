@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150310081221) do
+ActiveRecord::Schema.define(version: 20150311005140) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -77,9 +77,9 @@ ActiveRecord::Schema.define(version: 20150310081221) do
     t.text     "peer_feedback_received"
     t.string   "fullname"
     t.integer  "feedback_id"
-    t.string   "linkedin"
-    t.string   "facebook"
-    t.string   "twitter"
+    t.string   "linkedin",                        default: ""
+    t.string   "facebook",                        default: ""
+    t.string   "twitter",                         default: ""
     t.integer  "case_wins",                       default: 0
     t.decimal  "total_score",                     default: 0.0
     t.integer  "case_one_score",                  default: 0
