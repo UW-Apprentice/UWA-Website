@@ -33,6 +33,7 @@ columns do
   end
 end
 
+
 div class: 'col-md-12' do
    table_for Delegate.all.each, class: 'table table-condensed' do
   column(:fullname)

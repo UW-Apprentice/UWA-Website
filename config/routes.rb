@@ -36,4 +36,5 @@ Rails.application.routes.draw do
     get '/executive_feedback', to: 'feedbacks#exec_feedback'
 
     get '/executive_feedback_case', to: 'feedbacks#exec_case_eval'
+
 end

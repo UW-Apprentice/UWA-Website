@@ -323,12 +323,12 @@ $(function(){
         },
 
         xAxis:{
-            categories: ["Case 1", "Case 2", "Case 3", "Case 4"]
+            categories: ['Case 1', 'Case 2', 'Case 3', 'Case 4']
         },
 
         yAxis:{
             text: "Score",
-            min: 0,
+            min: 1,
             max: 1000,
             gridLineColor: 'transparent',
             title: {
@@ -357,7 +357,7 @@ $(function(){
             name: " Case Evaluation Score",
 
             
-            data: [<%= @case1_points[2] %>, <% @case2_points[2] %>, <%= @case3_points[2]  %>, <%= @case4_points[2] %>]
+            data: [<%= @case1_points[2] %>, <%= @case2_points[2] %>, <%= @case3_points[2]  %>, <%= @case4_points[2] %>]
         },{
             name: " Case Position Score",
 

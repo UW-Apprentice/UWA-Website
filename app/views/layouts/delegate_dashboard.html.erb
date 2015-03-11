@@ -9,7 +9,6 @@
 <body>
     <!--<p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>-->
-
     <!-- Static navbar -->
     <nav class="navbar navbar-default navbar-static-top">
       <div class="container">
@@ -30,7 +29,6 @@
           <ul class="nav navbar-nav navbar-right">
             <li><%= link_to "Team", team_path %></li>
             <li><%= link_to "Blog", stay_tuned_path %></li>
-
             <% if delegate_signed_in? %>
             <li><%= link_to "Logout", destroy_delegate_session_path, :method => :delete %></li>
 

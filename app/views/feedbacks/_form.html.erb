@@ -1,3 +1,15 @@
+<% @pending_feedback = Delegate.pending_feedback(current_delegate) %>
+
+<% if @pending_feedback <= 0 %>
+
+
+<div class="thanks" style="padding-top:150px;">
+<center>
+<h3>You have no feedback to give</h3>
+<%= fa_icon "check-circle 5x", :style => "color:#2ecc71" %></center>
+</div>
+
+<% else %>
 <%= form_for(@feedback) do |f| %>
   <% if @feedback.errors.any? %>
     <div id="error_explanation">
@@ -64,4 +76,6 @@
   <div class="actions">
     <%= f.submit "Give Feedback", :class => 'btn btn-success'  %>
   </div>
+<% end %>
+
 <% end %>
