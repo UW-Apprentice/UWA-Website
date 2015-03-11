@@ -6,7 +6,7 @@ before_filter :configure_permitted_parameters, if: :devise_controller?
 
 protected
   def configure_permitted_parameters
-   devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:email, :password, :password_confirmation, :estimated_leadership, :estimated_creativity, :estimated_business_sense, :estimated_overall_contribution, :estimated_presentation_skills, :linkedin, :facebook, :twitter) }
+   devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:email, :password, :password_confirmation, :estimated_leadership, :estimated_creativity, :estimated_business_sense, :estimated_overall_contribution, :estimated_presentation_skills, :linkedin, :facebook, :twitter, :delegate_program) }
 end
 
 end
