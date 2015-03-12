@@ -31,8 +31,9 @@
 
 
 <h4> Submit Case</h4>
-<%= form_for @case, :url => cases_path, :html => { :multipart => true } do |form| %>
+<%= form_for(@case, :html => { :multipart => true }) do |form| %>
   <%= form.file_field :document %>
+  <%= form.submit %>
 <% end %>
 </div>
 </div>

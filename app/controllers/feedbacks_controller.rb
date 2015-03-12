@@ -65,7 +65,7 @@ before_action :authenticate_executive!, only: [:edit, :update, :destroy]
 
     elsif (@feedback.exec_secret == secret_key_case)
       # Leadership = impact, creativity = feasibility, business_sense = innovation, presentation_skills = presentation, overall_contribution = overall
-    Delegate.update_case_eval_scores(@receiver, @projected_case_id, @feedback.leadership, @feedback.creativity, @feedback.business_sense, @feedback.presentation_skills, @feedback.overall_contribution)
+    Delegate.update_case_eval_scores(@receiver, @projected_case_id, @feedback.case_impact, @feedback.case_feasibility, @feedback.case_innovation, @feedback.case_presentation, @feedback.case_overall)
 
   else
     Delegate.update_peer_or_exec_scores(1, @projected_case_id, @receiver, @feedback.leadership, @feedback.creativity, @feedback.business_sense, @feedback.presentation_skills, @feedback.overall_contribution )
@@ -89,7 +89,7 @@ before_action :authenticate_executive!, only: [:edit, :update, :destroy]
     end
 
     def feedback_params
-      params.require(:feedback).permit(:receiver, :good_comments, :improvement_comments, :leadership, :creativity, :overall_contribution, :business_sense, :presentation_skills, :exec_secret, :type)
+      params.require(:feedback).permit(:receiver, :good_comments, :improvement_comments, :leadership, :creativity, :overall_contribution, :business_sense, :presentation_skills, :exec_secret, :type, :case_impact, :case_feasibility, :case_overall, :case_innovation, :case_presentation)
     end
 
     # Don't allow delegates to access what they're not supposed to

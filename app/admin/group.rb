@@ -14,7 +14,21 @@ ActiveAdmin.register Group do
   #   permitted
   # end
 
-permit_params :name, :delegates
+permit_params :group_name, :delegates,
+delegates_attributes: [:groups, :fullname]
 
+form do |f|
+    f.inputs "Basic Information" do
+        f.input :delegates, :multiple => true, as: :check_boxes, :collection => Delegate.all
+    end
+    f.actions
+end
+
+# GBTT unsafe 
+controller do
+  def permitted_params
+    params.permit!
+  end
+end
 
 end

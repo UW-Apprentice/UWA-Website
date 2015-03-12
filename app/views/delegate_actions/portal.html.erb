@@ -13,10 +13,9 @@
 
 <% end %>
 
-
 <% @num_finished_cases = Case.where(:case_sponsor => true).where(:done => true).count %>
 
-<% @num_finished_cases = @num_finished_cases = 0 ? -1 : @num_finished_cases %>
+<% @num_finished_cases = @num_finished_cases == 0 ? -1 : @num_finished_cases %>
 
 <h2 class="text-center">Overview</h2>
     <div class="row">
@@ -98,8 +97,8 @@
                                         <%= fa_icon "comments 5x"%>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge"><%= Delegate.received_feedback(current_delegate) %></div>
-                                        <div>Feedback Received</div>
+                                        <div class="huge"><%= Feedback.where(:receiver => current_delegate.fullname).where.not(:good_comments => nil).count%></div>
+                                        <div>Written Feedback Received</div>
                                     </div>
                                 </div>
                             </div>
@@ -115,22 +114,25 @@
 <% Case.where(:case_sponsor => true).each do |c| %>
 
 <%= link_to case_path(c) do %>
+<center>
 <div class="col-md-2">
 
 <%= image_tag(c.sponsor_logo, :class => 'img-responsive') %>
 <h4><%= c.sponsor%></h4>
-
 </div>
+</center>
 <% end %>
 
 <% end %>
 
 <%= link_to case_winners_path do %>
+<center>
 <div class="col-md-2">
 
 <%= image_tag("trophy.png", :class => 'img-responsive') %>
 <h4> Case Winners </h4>
 </div>
+</center>
 <% end %>
 
 </div>
@@ -156,6 +158,7 @@
 
 
 <% @avg_individual_scores = Delegate.average_delegate_attribute_scores(current_delegate.id) %>
+
 
 <% @avg_individual_scores.each do |s| %>
 <% s = s.round(2) %>

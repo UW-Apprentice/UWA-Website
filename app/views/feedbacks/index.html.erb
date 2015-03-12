@@ -2,8 +2,9 @@
 <h1 class="text-center">Your Received Feedback</h1>
 
 
-<% received_feedback = Feedback.where(:receiver => current_delegate.fullname) %>
+<% received_feedback = Feedback.where(:receiver => current_delegate.fullname).where.not(:good_comments => nil) %>
 <% received_feedback.each do |f| %>
+
  <div class="block-update-card status">
     <div class="update-card-body">
       <div class="update-card-body">

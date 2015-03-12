@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150311005140) do
+ActiveRecord::Schema.define(version: 20150312161115) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -197,12 +197,21 @@ ActiveRecord::Schema.define(version: 20150311005140) do
     t.integer  "presentation_skills"
     t.integer  "exec_secret"
     t.string   "type"
+    t.integer  "case_impact"
+    t.integer  "case_feasibility"
+    t.integer  "case_innovation"
+    t.integer  "case_presentation"
+    t.integer  "case_overall"
   end
 
   create_table "groups", force: true do |t|
     t.string   "group_name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "case_submission_file_name"
+    t.string   "case_submission_content_type"
+    t.integer  "case_submission_file_size"
+    t.datetime "case_submission_updated_at"
   end
 
   create_table "itineraries", force: true do |t|
@@ -225,6 +234,18 @@ ActiveRecord::Schema.define(version: 20150311005140) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "delegate_id"
+    t.boolean  "case_one_winner",       default: false
+    t.boolean  "case_two_winner",       default: false
+    t.boolean  "case_three_winner",     default: false
+    t.boolean  "case_four_winner",      default: false
+    t.boolean  "case_one_second",       default: false
+    t.boolean  "case_two_second",       default: false
+    t.boolean  "case_three_second",     default: false
+    t.boolean  "case_four_second",      default: false
+    t.boolean  "case_one_third",        default: false
+    t.boolean  "case_two_third",        default: false
+    t.boolean  "case_three_third",      default: false
+    t.boolean  "case_four_third",       default: false
   end
 
   create_table "rs_evaluations", force: true do |t|

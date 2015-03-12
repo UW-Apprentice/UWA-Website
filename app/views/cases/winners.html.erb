@@ -1,57 +1,94 @@
 <div class="container">
-<div class="col-md-2">
-<%= link_to root_path do |c| %>
-<%= fa_icon "arrow-left 2x", :style => 'margin-top:30px'%>
-<p style="display:inline;">Portal</p>
-<% end %>
-</div>
-<div class="col-md-10">
 <h1 class="text-center">Case Winners</h1>
-</div>
 <% @num_finished_cases = Case.where(:case_sponsor => true).where(:done => true).count %>
 
-<% if @num_finished_cases == 1 %>
-<h2>Case One</h2>
+<% if @num_finished_cases >= 1 and Membership.where(:case_one_winner => true).first != nil %>
 
-<% case_one_winners = Delegate.order(:case_one_score).limit(4) %>
+<% case_one_winners = Membership.where(:case_one_winner => true).first.group_id %>
 
-<% case_one_winners.each do |w| %>
+<div class="block-update-card">
+	<div class="update-card-body">
+	<div class="col-md-12">
 
-<h3><%= w.fullname %></h3>
-
-<% end %>
-
-<% elsif @num_finished_cases == 2 %>
-<h2>Case Two</h2>
-
-<% case_one_winners = Delegate.order(:case_two_score).limit(4) %>
+		<h3 style="display:inline">Case 1: &nbsp;<%= Group.where(:id => case_one_winners).first.group_name %>  
+		<% case_one_winners = Group.where(:id => case_one_winners).first.delegates %>
 
 <% case_one_winners.each do |w| %>
+<small style="display:inline"><%= w.fullname %>,</small>
+<% end %></h3>
 
-<h3><%= w.fullname %></h3>
+		</div>
+
+				</div>
+			</div>
+			<% end %>
+
+<% if @num_finished_cases >= 2  and Membership.where(:case_two_winner => true).first != nil %>
+
+<% case_two_winners = Membership.where(:case_two_winner => true).first.group_id %>
+
+
+<div class="block-update-card">
+	<div class="update-card-body">
+	<div class="col-md-12">
+	
+		<h3 style="display:inline">Case 2: &nbsp;<%= Group.where(:id => case_two_winners).first.group_name %>  
+		<% case_two_winners = Group.where(:id => case_two_winners).first.delegates %>
+
+<% case_two_winners.each do |w| %>
+<small style="display:inline"><%= w.fullname %>,</small>
+<% end %></h3>
+
+		</div>
+
+				</div>
+			</div>
+
+
 
 <% end %>
+<% if @num_finished_cases >= 3 and Membership.where(:case_three_winner => true).first != nil %>
+<% case_three_winners = Membership.where(:case_three_winner => true).first.group_id %>
 
-<% elsif @num_finished_cases == 3 %>
-<h2>Case Three</h2>
+<div class="block-update-card">
+	<div class="update-card-body">
+	<div class="col-md-12">
+	
+		<h3 style="display:inline">Case 3: &nbsp;<%= Group.where(:id => case_three_winners).first.group_name %>  
+		<% case_three_winners = Group.where(:id => case_three_winners).first.delegates %>
 
-<% case_one_winners = Delegate.order(:case_three_score).limit(4) %>
+<% case_three_winners.each do |w| %>
+<small style="display:inline"><%= w.fullname %>,</small>
+<% end %></h3>
 
-<% case_one_winners.each do |w| %>
+		</div>
 
-<h3><%= w.fullname %></h3>
+				</div>
+			</div>
+
+
 
 <% end %>
+<% if @num_finished_cases >= 4 and Membership.where(:case_four_winner => true).first != nil %>
 
-<% elsif @num_finished_cases == 4 %>
-<h2>Case Four</h2>
+<% case_four_winners = Membership.where(:case_four_winner => true).first.group_id  %>
 
-<% case_one_winners = Delegate.order(:case_four_score).limit(4) %>
+<div class="block-update-card">
+	<div class="update-card-body">
+	<div class="col-md-12">
+	
+		<h3 style="display:inline">Case 4: &nbsp;<%= Group.where(:id => case_four_winners).first.group_name %>  
+		<% case_four_winners = Group.where(:id => case_four_winners).first.delegates %>
 
-<% case_one_winners.each do |w| %>
+<% case_four_winners.each do |w| %>
+<small style="display:inline"><%= w.fullname %>,</small>
+<% end %></h3>
 
-<h3><%= w.fullname %></h3>
+		</div>
 
-<% end %>
+				</div>
+			</div>
+
+
 <% end %>
 </div>

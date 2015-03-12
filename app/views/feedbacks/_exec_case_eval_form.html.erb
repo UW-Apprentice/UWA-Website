@@ -24,29 +24,28 @@
     <%= f.label "Case Number" %><br>
     <%= f.number_field :leadership, class: "form-control", in: 1...5, :required => true  %>
   </div>-->
-
   <div class="field">
     <%= f.label :impact %><br>
-    <%= f.number_field :leadership, class: "form-control", in: 1...11, :required => true  %>
+    <%= f.number_field :case_impact, class: "form-control", in: 1...11, :required => true  %>
   </div>
   <div class="field">
     <%= f.label :feasibility %><br>
-    <%= f.number_field :creativity, class: "form-control", in: 1...11, :required => true   %>
+    <%= f.number_field :case_feasibility, class: "form-control", in: 1...11, :required => true   %>
   </div>
 
   <div class="field">
     <%= f.label :innovation %><br>
-    <%= f.number_field :business_sense, class: "form-control", in: 1...11, :required => true  %>
+    <%= f.number_field :case_innovation, class: "form-control", in: 1...11, :required => true  %>
   </div>
 
   <div class="field">
     <%= f.label :presentation %><br>
-    <%= f.number_field :presentation_skills, class: "form-control", in: 1...11, :required => true  %>
+    <%= f.number_field :case_presentation, class: "form-control", in: 1...11, :required => true  %>
   </div>
 
   <div class="field">
     <%= f.label :overall %><br>
-    <%= f.number_field :overall_contribution, class: "form-control", in: 1...11, :required => true  %>
+    <%= f.number_field :case_overall, class: "form-control", in: 1...11, :required => true  %>
   </div>
 
   <div class="field">

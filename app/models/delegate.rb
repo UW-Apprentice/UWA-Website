@@ -9,6 +9,7 @@ class Delegate < ActiveRecord::Base
   # Many to many
   has_many :memberships
   has_many :groups, :through => :memberships
+  accepts_nested_attributes_for :groups
 
   @num_finished_cases = Case.where(:case_sponsor => true).where(:done => true).count 
   
@@ -138,7 +139,8 @@ class Delegate < ActiveRecord::Base
   # This at least has a logical output
   def self.average_delegate_attribute_scores(d_id)
     temp_delegate = Delegate.where(:id => d_id).first
-    completed_cases = @num_finished_cases
+      @num_finished_cases = Case.where(:case_sponsor => true).where(:done => true).count 
+
   
     # This function deals with both peer and exec scores
     type_peer = "peer"
@@ -171,7 +173,7 @@ class Delegate < ActiveRecord::Base
         temp_score = temp_delegate[temp_attribute]
         total_exec_l += temp_score
       end
-      avg_exec_l = total_exec_l/completed_cases
+      avg_exec_l = total_exec_l/@num_finished_cases
 
       #creativity
       for i in 1..4
@@ -179,7 +181,7 @@ class Delegate < ActiveRecord::Base
         temp_score = temp_delegate[temp_attribute]
         total_exec_c += temp_score
       end
-      avg_exec_c = total_exec_c/completed_cases
+      avg_exec_c = total_exec_c/@num_finished_cases
 
       #business sense
       for i in 1..4
@@ -187,7 +189,7 @@ class Delegate < ActiveRecord::Base
         temp_score = temp_delegate[temp_attribute]
         total_exec_bs += temp_score
       end
-      avg_exec_bs = total_exec_bs/completed_cases
+      avg_exec_bs = total_exec_bs/@num_finished_cases
 
       #presentation skills
       for i in 1..4
@@ -195,7 +197,7 @@ class Delegate < ActiveRecord::Base
         temp_score = temp_delegate[temp_attribute]
         total_exec_ps += temp_score
       end
-      avg_exec_ps = total_exec_ps/completed_cases
+      avg_exec_ps = total_exec_ps/@num_finished_cases
 
       #overall contribution
       for i in 1..4
@@ -203,7 +205,7 @@ class Delegate < ActiveRecord::Base
         temp_score = temp_delegate[temp_attribute]
         total_exec_oc += temp_score
       end
-      avg_exec_oc = total_exec_oc/completed_cases
+      avg_exec_oc = total_exec_oc/@num_finished_cases
 
     #Second, average the score of the peers across all completed cases
       # Initialize all of the totals to calculate
@@ -225,7 +227,7 @@ class Delegate < ActiveRecord::Base
         temp_score = temp_delegate[temp_attribute]
         total_peer_l += temp_score
       end
-      avg_peer_l = total_peer_l/completed_cases
+      avg_peer_l = total_peer_l/@num_finished_cases
 
       #creativity
       for i in 1..4
@@ -233,7 +235,7 @@ class Delegate < ActiveRecord::Base
         temp_score = temp_delegate[temp_attribute]
         total_peer_c += temp_score
       end
-      avg_peer_c = total_peer_c/completed_cases
+      avg_peer_c = total_peer_c/@num_finished_cases
 
       #business sense
       for i in 1..4
@@ -241,7 +243,7 @@ class Delegate < ActiveRecord::Base
         temp_score = temp_delegate[temp_attribute]
         total_peer_bs += temp_score
       end
-      avg_peer_bs = total_peer_bs/completed_cases
+      avg_peer_bs = total_peer_bs/@num_finished_cases
 
       #presentation skills
       for i in 1..4
@@ -249,7 +251,7 @@ class Delegate < ActiveRecord::Base
         temp_score = temp_delegate[temp_attribute]
         total_peer_ps += temp_score
       end
-      avg_peer_ps = total_peer_ps/completed_cases
+      avg_peer_ps = total_peer_ps/@num_finished_cases
 
       #overall contribution
       for i in 1..4
@@ -257,7 +259,7 @@ class Delegate < ActiveRecord::Base
         temp_score = temp_delegate[temp_attribute]
         total_peer_oc += temp_score
       end
-      avg_peer_oc = total_peer_oc/completed_cases
+      avg_peer_oc = total_peer_oc/@num_finished_cases
 
     #Third, average the score of the peers and execs for each metric
     avg_l = (avg_exec_l + avg_peer_l)/2
@@ -278,7 +280,8 @@ class Delegate < ActiveRecord::Base
   ###############
   def self.average_case_eval_scores(d_id)
     temp_delegate = Delegate.where(:id => d_id).first
-    completed_cases = @num_finished_cases
+      @num_finished_cases = Case.where(:case_sponsor => true).where(:done => true).count 
+
 
     # Store the attributes in variables
     att_im = "_impact"
@@ -307,7 +310,7 @@ class Delegate < ActiveRecord::Base
         temp_score = temp_delegate[temp_attribute]
         total_im += temp_score
       end
-      avg_im = total_im/completed_cases
+      avg_im = total_im/@num_finished_cases
 
       #feasibility
       for i in 1..4
@@ -315,7 +318,7 @@ class Delegate < ActiveRecord::Base
         temp_score = temp_delegate[temp_attribute]
         total_f += temp_score
       end
-      avg_f = total_f/completed_cases
+      avg_f = total_f/@num_finished_cases
 
       #innovation
       for i in 1..4
@@ -323,7 +326,7 @@ class Delegate < ActiveRecord::Base
         temp_score = temp_delegate[temp_attribute]
         total_in += temp_score
       end
-      avg_in = total_in/completed_cases
+      avg_in = total_in/@num_finished_cases
 
       #presentation
       for i in 1..4
@@ -331,7 +334,7 @@ class Delegate < ActiveRecord::Base
         temp_score = temp_delegate[temp_attribute]
         total_p += temp_score
       end
-      avg_p = total_p/completed_cases
+      avg_p = total_p/@num_finished_cases
 
       #overall
       for i in 1..4
@@ -339,7 +342,7 @@ class Delegate < ActiveRecord::Base
         temp_score = temp_delegate[temp_attribute]
         total_o += temp_score
       end
-      avg_o = total_o/completed_cases
+      avg_o = total_o/@num_finished_cases
 
        average_case_eval_scores_output = [avg_im, avg_f, avg_in, avg_p, avg_o]
     return average_case_eval_scores_output
@@ -351,7 +354,8 @@ class Delegate < ActiveRecord::Base
   ###############
   def self.total_points_by_source(d_id)
     temp_delegate = Delegate.where(:id => d_id).first
-    completed_cases = @num_finished_cases
+      @num_finished_cases = Case.where(:case_sponsor => true).where(:done => true).count 
+
   
     # This function deals with both peer and exec scores
     type_peer = "peer"
@@ -463,7 +467,8 @@ class Delegate < ActiveRecord::Base
   ###############
   def self.total_points_by_case(d_id, case_number)
     temp_delegate = Delegate.where(:id => d_id).first
-    completed_cases = @num_finished_cases
+      @num_finished_cases = Case.where(:case_sponsor => true).where(:done => true).count 
+
     case_num = case_number.to_s
   
     # This function deals with both peer and exec scores
@@ -627,6 +632,10 @@ class Delegate < ActiveRecord::Base
     scores[3] = @raw_max * @case_pos_weight * @num_finished_cases
 
     return scores
+  end
+
+  def self.test
+    @num_finished_cases
   end
 
 

@@ -223,10 +223,8 @@ Creating a block for social media buttons
   width: 600px;
   height: 52px;
   overflow: hidden;
-  position: fixed;
   z-index:10000;
-  left: 25%;
-  margin: 0 0 0 -37.5%;
+margin-left:9%;  
 }
 .delegate-nav li { 
   height: 52px;
@@ -250,18 +248,37 @@ Creating a block for social media buttons
   margin-top:30px;
 }
 
-.pill-wrapper{
-background:white;
-    width: 100%;
-  height: 100px;
-  overflow: hidden;
-  position: fixed;
-  margin: -100px 0 0 0;
-  z-index:100;
-  left:0%;
-  right:0%;
-}
 .modal .modal-body {
     max-height: 420px;
     overflow-y: auto;
+}
+
+.text-vertical-center{
+  padding-top:30px;
+}
+
+@media (max-width: 900px) {
+  .text-vertical-center{
+  padding-top:90px;
+  }
+
+  .text-vertical-center h3{
+    font-size:2em;
+  }
+
+
+
+
+}
+
+@media (max-width: 500px){
+    .delegate-nav li { 
+  height: 50px;
+
+  }
+  .delegate-nav li a {
+  height: 50px;
+padding: 0 5px;
+line-height: 50px;
+  }
 }
