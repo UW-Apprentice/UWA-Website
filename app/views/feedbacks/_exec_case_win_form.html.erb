@@ -13,7 +13,7 @@
 
 <!-- NOTE: Labels are correct, but where the points are allocated in the db is wrong.  But delegate still get their points !!!!!!!!!! -->
   <div class="field">
-    <%= f.label :receiver %><br>
+    <%= f.label "Receiving Delegate (One by one for now)" %><br>
     <%= select("feedback", "receiver", Delegate.all.collect {|d|
      [ d.fullname] }, {include_blank: 'None'}, class: "form-control", :required => true)
 
@@ -25,31 +25,15 @@
     <%= f.number_field :leadership, class: "form-control", in: 1...5, :required => true  %>
   </div>-->
   <div class="field">
-    <%= f.label :impact %><br>
-    <%= f.number_field :case_impact, class: "form-control", in: 1...11, :required => true  %>
+    <%= f.label :case_number %><br>
+    <%= f.number_field :case_number, class: "form-control", in: 1...5, :required => true  %>
   </div>
   <div class="field">
-    <%= f.label :feasibility %><br>
-    <%= f.number_field :case_feasibility, class: "form-control", in: 1...11, :required => true   %>
+    <%= f.label :case_position %><br>
+    <%= f.number_field :case_position, class: "form-control", in: 1...4, :required => true   %>
   </div>
-
   <div class="field">
-    <%= f.label :innovation %><br>
-    <%= f.number_field :case_innovation, class: "form-control", in: 1...11, :required => true  %>
-  </div>
-
-  <div class="field">
-    <%= f.label :presentation %><br>
-    <%= f.number_field :case_presentation, class: "form-control", in: 1...11, :required => true  %>
-  </div>
-
-  <div class="field">
-    <%= f.label :overall %><br>
-    <%= f.number_field :case_overall, class: "form-control", in: 1...11, :required => true  %>
-  </div>
-
-  <div class="field">
-    <%= f.label :exec_secret %> <i>&nbsp;Please ensure you enter the correct Key for each of the forms. They are different!!!!</i><br>
+    <%= f.label :exec_secret %><i>&nbsp;Please ensure you enter the correct Key for each of the forms. They are different!!!!</i><br>
     <%= f.number_field :exec_secret, class: "form-control", :required => true  %>
   </div>
 

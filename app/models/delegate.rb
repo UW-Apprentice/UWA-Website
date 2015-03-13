@@ -88,7 +88,6 @@ class Delegate < ActiveRecord::Base
 
   end
 
-  
   # Update Case Position Scores
   def self.update_case_pos_scores(d_id, case_number, case_position)
 

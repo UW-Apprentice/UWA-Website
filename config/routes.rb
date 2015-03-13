@@ -33,8 +33,10 @@ Rails.application.routes.draw do
 
     get '/stay_tuned', to: 'info#stay_tuned'
 
-    get '/executive_feedback', to: 'feedbacks#exec_feedback'
+    get '/executive_feedback_attr', to: 'feedbacks#exec_feedback'
 
     get '/executive_feedback_case', to: 'feedbacks#exec_case_eval'
+
+    get '/executive_feedback_win', to: 'feedbacks#exec_feedback_win'
 
 end

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>UW Apprentice | Innovate, Impact, Experience</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+    <!--<p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>-->
+    <!-- Static navbar -->
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
+          <%= link_to root_path do |l| %>
+          <%= image_tag("logo-home.png", class: 'navbar-brand', :style => 'width:40px') %>
+
+          <% end %>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to "Team", team_path %></li>
+            <li><%= link_to "Blog", stay_tuned_path %></li>
+            <% if delegate_signed_in? %>
+            <li><%= link_to "Logout", destroy_delegate_session_path, :method => :delete %></li>
+            <% else %>
+            <li><%= link_to "Login", new_delegate_session_path %></li>
+
+            <% end %>
+          </ul>
+        </div>
+      </div>
+      </div>
+    </nav>
+
+<div class="container">
+<div class="pill-wrapper" style="display:inline-block" >
+
+</div>
+        
+    <center><ul class="nav nav-pills delegate-nav" style="margin-left:4%;">
+
+<%= content_tag(:li, link_to("Delegate Skill Evaluation", executive_feedback_attr_path), class: cp(executive_feedback_attr_path)) %>
+
+  <%= content_tag(:li, link_to("Delegate Case Evaluation", executive_feedback_case_path), class: cp(executive_feedback_case_path)) %>
+   <%= content_tag(:li, link_to("Attribute Case Wins", executive_feedback_win_path), class: cp(executive_feedback_win_path)) %>
+   
+</ul></center>
+</div>
+
+    <div class="col-md-12">
+      <%= yield %>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -3,7 +3,10 @@ before_action :set_feedback, only: [:show, :edit, :update, :destroy]
 before_action :authenticate_executive!, only: [:edit, :update, :destroy]
 
 
- layout "delegate_dashboard"
+# GBTT: EXTREMELY UNSAFE BECAUSE OF THE METHOD
+ layout :set_layout
+
+ #layout "exec_evaluation", only: [:exec_feedback, :exec_case_eval, :exec_feedback_win]
 
   respond_to :html
 
@@ -25,7 +28,6 @@ before_action :authenticate_executive!, only: [:edit, :update, :destroy]
   end
 
   def exec_feedback
-
     @feedback = Feedback.new
     respond_with(@feedback)
   end
@@ -43,6 +45,10 @@ before_action :authenticate_executive!, only: [:edit, :update, :destroy]
 
   end
 
+  def exec_feedback_win
+    @feedback = Feedback.new
+    respond_with(@feedback)
+  end
   def edit
   end
 
@@ -50,10 +56,12 @@ before_action :authenticate_executive!, only: [:edit, :update, :destroy]
 
     secret_key_attributes = 8238
     secret_key_case = 1111
+    secret_key_case_win = 5656
     @feedback = current_delegate.feedbacks.build(feedback_params)
     @feedback.save
-    @projected_case_id = Case.where(:case_sponsor => true).where(:done => true).count + 1
+   # @projected_case_id = Case.where(:case_sponsor => true).where(:done => true).count + 1
     
+    @projected_case_id = Case.where(:case_sponsor => true).where(:done => true).count
 
     @receiver = Delegate.where(:fullname => @feedback.receiver).first.id
 
@@ -67,6 +75,9 @@ before_action :authenticate_executive!, only: [:edit, :update, :destroy]
       # Leadership = impact, creativity = feasibility, business_sense = innovation, presentation_skills = presentation, overall_contribution = overall
     Delegate.update_case_eval_scores(@receiver, @projected_case_id, @feedback.case_impact, @feedback.case_feasibility, @feedback.case_innovation, @feedback.case_presentation, @feedback.case_overall)
 
+  elsif (@feedback.exec_secret == secret_key_case_win)
+
+    Delegate.update_case_pos_scores(@receiver, @feedback.case_number, @feedback.case_position)
   else
     Delegate.update_peer_or_exec_scores(1, @projected_case_id, @receiver, @feedback.leadership, @feedback.creativity, @feedback.business_sense, @feedback.presentation_skills, @feedback.overall_contribution )
     end
@@ -88,8 +99,17 @@ before_action :authenticate_executive!, only: [:edit, :update, :destroy]
       @feedback = Feedback.find(params[:id])
     end
 
+    def set_layout
+
+      if current_delegate != nil
+        "delegate_dashboard"
+      else
+        "exec_evaluation"
+       end
+     end
+
     def feedback_params
-      params.require(:feedback).permit(:receiver, :good_comments, :improvement_comments, :leadership, :creativity, :overall_contribution, :business_sense, :presentation_skills, :exec_secret, :type, :case_impact, :case_feasibility, :case_overall, :case_innovation, :case_presentation)
+      params.require(:feedback).permit(:receiver, :good_comments, :improvement_comments, :leadership, :creativity, :overall_contribution, :business_sense, :presentation_skills, :exec_secret, :type, :case_impact, :case_feasibility, :case_overall, :case_innovation, :case_presentation, :case_position, :case_number)
     end
 
     # Don't allow delegates to access what they're not supposed to

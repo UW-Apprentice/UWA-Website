@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150312161115) do
+ActiveRecord::Schema.define(version: 20150313214445) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -200,6 +200,8 @@ ActiveRecord::Schema.define(version: 20150312161115) do
     t.integer  "case_innovation"
     t.integer  "case_presentation"
     t.integer  "case_overall"
+    t.integer  "case_number"
+    t.integer  "case_position"
   end
 
   create_table "groups", force: true do |t|
