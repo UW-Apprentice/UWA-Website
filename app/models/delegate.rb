@@ -11,7 +11,6 @@ class Delegate < ActiveRecord::Base
   has_many :groups, :through => :memberships
   accepts_nested_attributes_for :groups
 
-  @num_finished_cases = Case.where(:case_sponsor => true).where(:done => true).count 
   
   @peer_evals_weight = 4.0
   @exec_evals_weight = 6.0
@@ -571,6 +570,7 @@ class Delegate < ActiveRecord::Base
   ###############
 
   def self.pending_feedback(d_id)
+    @num_finished_cases = Case.where(:case_sponsor => true).where(:done => true).count 
 	num_reviewing = 3 
 	given_feedback = Feedback.where(:delegate_id => d_id.id).count
 
@@ -623,7 +623,7 @@ class Delegate < ActiveRecord::Base
   # This shold return max scores in form: [peer_evals, exec_evals, case_eval, case_position]
 
   def self.max_values
-
+@num_finished_cases = Case.where(:case_sponsor => true).where(:done => true).count 
     scores = [0,0,0,0]
 
     scores[0] = @raw_max * @peer_evals_weight * @num_finished_cases

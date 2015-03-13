@@ -1,6 +1,5 @@
 <!-- <h1><%= current_delegate.fullname %></h1>
 <hr>-->
-
 <% if current_delegate.linkedin == '' or current_delegate.facebook == '' or current_delegate.twitter == '' %>
 <div class="alert alert-warning" role="alert">
 	
@@ -156,9 +155,7 @@
 </div>
 </div>
 
-
 <% @avg_individual_scores = Delegate.average_delegate_attribute_scores(current_delegate.id) %>
-
 
 <% @avg_individual_scores.each do |s| %>
 <% s = s.round(2) %>
@@ -172,7 +169,10 @@ $(function(){
 
         chart:{
             renderTo: "individual_attributes_chart",
-            type: "spline"
+            type: "spline",
+            style: {
+            fontFamily: 'Roboto'
+        }
         },
 
         title:{
@@ -222,7 +222,10 @@ $(function(){
 
         chart:{
             renderTo: "case_attributes_chart",
-            type: "spline"
+            type: "spline",
+            style: {
+            fontFamily: 'Roboto'
+        }
         },
 
         title:{
@@ -267,7 +270,10 @@ $(function(){
 
         chart:{
             renderTo: "point_breakdown_by_source",
-            type: "spline"
+            type: "spline",
+            style: {
+            fontFamily: 'Roboto'
+        }
         },
 
         title:{
@@ -318,7 +324,10 @@ $(function(){
 
         chart:{
             renderTo: "points_each_case",
-            type: "column"
+            type: "column",
+            style: {
+            fontFamily: 'Roboto'
+        }
         },
 
         title:{
