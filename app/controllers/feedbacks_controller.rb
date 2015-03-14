@@ -85,7 +85,7 @@ before_action :authenticate_executive!, only: [:edit, :update, :destroy]
 
     Delegate.update_case_pos_scores(@receiver, @feedback.case_number, @feedback.case_position)
   else
-    Delegate.update_peer_or_exec_scores(1, @projected_case_id, @receiver, @feedback.leadership, @feedback.creativity, @feedback.business_sense, @feedback.presentation_skills, @feedback.overall_contribution )
+    Delegate.update_peer_or_exec_scores(1, @projected_case_id -1, @receiver, @feedback.leadership, @feedback.creativity, @feedback.business_sense, @feedback.presentation_skills, @feedback.overall_contribution )
     end
     
     respond_with(@feedback)
