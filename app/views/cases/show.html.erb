@@ -16,9 +16,9 @@
  
 
 <div style="box-shadow: 0px 0px 5px #fff;">
-<%= link_to new_feedback_path do |c| %>
+<%= link_to new_feedback_path do %>
 <p style="display:inline;">Submit Peer Evaluations</p>
-<%= fa_icon "arrow-right 2x", class: 'float-right', :style => 'margin-top:30px'%>
+<%= fa_icon "arrow-right 2x", class: 'float-right', :style => 'margin-top:30px; display:inline'%>
 <% end %>
 </div>
 
@@ -26,6 +26,7 @@
 
 </div>
 </div>
+
 <div class="row">
 <p>  <%= raw @case.description %></p>
 

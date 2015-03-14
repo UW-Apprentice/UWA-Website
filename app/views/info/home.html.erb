@@ -62,6 +62,7 @@
         	<h3>Friday</h3>
 
           <% Itinerary.where(:day => 'friday').order(item_time: :asc).each do |i| %>
+          <br>
 
           <h4><%= i.item %></h4>
 
@@ -75,6 +76,7 @@
         	<h3>Saturday</h3>
 
           <% Itinerary.where(:day => 'saturday').order(item_time: :asc).each do |i| %>
+          <br>
 
           <h4><%= i.item %></h4>
 
@@ -87,6 +89,7 @@
         	<div class="col-md-4">
         	<h3>Sunday</h3>
         	 <% Itinerary.where(:day => 'sunday').order(item_time: :asc).each do |i| %>
+          <br>
 
           <h4><%= i.item %></h4>
           <!-- Get time from db format it right and remove leading zero -->
@@ -105,6 +108,17 @@
         <h2>Team</h2>
 
 <% Exec.where(:position => 'President').each do |p| %>
+
+        <div class="col-md-4">
+
+        <center><%= image_tag(p.picture, :class => 'img-responsive') %></center>
+        <h3><%= p.exec_name %></h3>
+        <h4><%= p.position %></h4>
+        <h4><%= p.program %></h4>
+        </div>
+        <% end %>
+
+        <% Exec.where(:position => 'Advisor').each do |p| %>
 
         <div class="col-md-4">
 

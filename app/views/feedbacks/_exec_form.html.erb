@@ -11,6 +11,7 @@
     </div>
   <% end %>
 
+<h6 class="text-center">Please make sure you look over this <%= link_to "rubric", "https://www.dropbox.com/s/71nj8rf8dkel5qf/rubric.pdf?dl=1", :target => '_blank'%> before submitting feedback</h6>
   <div class="field">
     <%= f.label :receiver %><br>
     <%= select("feedback", "receiver", Delegate.all.collect {|d|

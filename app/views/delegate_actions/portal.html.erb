@@ -3,7 +3,8 @@
 <% if current_delegate.linkedin == '' or current_delegate.facebook == '' or current_delegate.twitter == '' %>
 <div class="alert alert-warning" role="alert">
 	
-	<p>Pssstttt <%= current_delegate.fullname %>, you have yet to fill out your social info.  Fill it out so other delegates
+    <% name = current_delegate.fullname.split(' ')[1..-1].join(' ') %>
+	<p>Hey <%= name %>, you have yet to fill out your social info.  Fill it out so other delegates
 	can connect with you after the conference. :)</p>
 
 	<%= link_to "Edit your social networks", edit_delegate_registration_path %>
@@ -132,6 +133,7 @@
 
 <%= image_tag("trophy.png", :class => 'img-responsive') %>
 <h4> Case Winners </h4>
+<hr>
 </div>
 </center>
 <% end %>

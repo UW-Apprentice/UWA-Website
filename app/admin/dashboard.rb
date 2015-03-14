@@ -37,10 +37,7 @@ end
 div class: 'col-md-12' do
    table_for Delegate.all.each, class: 'table table-condensed' do
   column(:fullname)
-  column "Total Peer Score",     :created_at
-  column "Total Exec Score", :program
-  column "Total Case Score",          :linkedin
-  column "Competition Score",          :linkedin
+  column "Competition Score",          :total_score
 end
 end
 =begin
