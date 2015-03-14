@@ -57,7 +57,13 @@ before_action :authenticate_executive!, only: [:edit, :update, :destroy]
     secret_key_attributes = 8238
     secret_key_case = 1111
     secret_key_case_win = 5656
+
+    if current_delegate
     @feedback = current_delegate.feedbacks.build(feedback_params)
+  else
+    @feedback = Feedback.new(feedback_params)
+  end
+
     @feedback.save
    # @projected_case_id = Case.where(:case_sponsor => true).where(:done => true).count + 1
     
