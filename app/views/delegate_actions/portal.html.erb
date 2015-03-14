@@ -109,14 +109,17 @@
 <h2 class="text-center">Cases</h2>
 
 <div class="col-lg-12">
-<% Case.where(:case_sponsor => true).each do |c| %>
 
+<% count = 1 %>
+<% Case.where(:case_sponsor => true).order(:id).each do |c| %>
 <%= link_to case_path(c) do %>
 <center>
 <div class="col-md-2">
 
 <%= image_tag(c.sponsor_logo, :class => 'img-responsive') %>
+<h4>Case <%= count %></h4>
 <h4><%= c.sponsor%></h4>
+<% count += 1%>
 </div>
 </center>
 <% end %>
@@ -137,7 +140,7 @@
 
 <hr>
 
-<div id="analytics">
+<div id="analytics" style="padding-top:40px">
 <h2 class="text-center">Personal Analytics</h2>
 
 <div class="col-md-6">
