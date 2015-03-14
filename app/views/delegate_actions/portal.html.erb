@@ -3,7 +3,7 @@
 <% if current_delegate.linkedin == '' or current_delegate.facebook == '' or current_delegate.twitter == '' %>
 <div class="alert alert-warning" role="alert">
 	
-    <% name = current_delegate.fullname.split(' ')[1..-1].join(' ') %>
+    <% name = current_delegate.fullname.split(' ')[0...1].join(' ') %>
 	<p>Hey <%= name %>, you have yet to fill out your social info.  Fill it out so other delegates
 	can connect with you after the conference. :)</p>
 
@@ -39,7 +39,7 @@
 
                     <% end %>
 
-   <%= link_to "#analytics" do %>
+   <%= link_to "https://www.dropbox.com/s/j8q4rw3ez6b2p2y/groups.png?dl=1" do %>
  <div class="col-lg-3 col-md-6">
                         <div class="panel panel-primary">
                             <div class="panel-heading">

@@ -29,8 +29,8 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li class="link-formatting"><%= link_to "About", team_path %></li>
-            <li class="link-formatting"><%= link_to "Blog", stay_tuned_path %></li>
+           <!-- <li class="link-formatting"><%= link_to "About", team_path %></li>
+            <li class="link-formatting"><%= link_to "Blog", stay_tuned_path %></li>-->
 
             <% if delegate_signed_in? %>
 <li><%= link_to "Logout", destroy_delegate_session_path, :method => :delete %></li>
@@ -40,7 +40,7 @@
 
             <% end %>
           </ul>
-        </div><!--/.nav-collapse -->
+        </div> 
       </div>
     </nav>
 <%= yield %>
