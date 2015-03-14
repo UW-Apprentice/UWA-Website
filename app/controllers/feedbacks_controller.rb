@@ -79,7 +79,7 @@ before_action :authenticate_executive!, only: [:edit, :update, :destroy]
 
     elsif (@feedback.exec_secret == secret_key_case)
       # Leadership = impact, creativity = feasibility, business_sense = innovation, presentation_skills = presentation, overall_contribution = overall
-    Delegate.update_case_eval_scores(@receiver, @projected_case_id, @feedback.case_impact, @feedback.case_feasibility, @feedback.case_innovation, @feedback.case_presentation, @feedback.case_overall)
+    Delegate.update_case_eval_scores(@receiver, @projected_case_id - 1, @feedback.case_impact, @feedback.case_feasibility, @feedback.case_innovation, @feedback.case_presentation, @feedback.case_overall)
 
   elsif (@feedback.exec_secret == secret_key_case_win)
 
