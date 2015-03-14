@@ -14,7 +14,7 @@ ActiveAdmin.register Delegate do
   #   permitted
   # end
 
-permit_params :fullname, :email, :groups, :linkedin, :facebook, :twitter, :presentation, :business_sense, :communication, :creativity, :delegate_program
+permit_params :fullname, :email, :groups, :linkedin, :facebook, :twitter, :presentation, :business_sense, :communication, :creativity, :delegate_program, :case2_exec_leadership, :case2_exec_creativity, :case2_exec_business_sense, :case2_exec_presentation_skills, :case2_exec_overall_contribution, :total_score, :case2_eval_count, :case2_num_exec_evals
 
 
 end
