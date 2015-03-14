@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150313214445) do
+ActiveRecord::Schema.define(version: 20150314022825) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -246,6 +246,12 @@ ActiveRecord::Schema.define(version: 20150313214445) do
     t.boolean  "case_two_third",        default: false
     t.boolean  "case_three_third",      default: false
     t.boolean  "case_four_third",       default: false
+  end
+
+  create_table "notices", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "notice_message"
   end
 
   create_table "rs_evaluations", force: true do |t|

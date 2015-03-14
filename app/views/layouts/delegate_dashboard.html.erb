@@ -50,12 +50,12 @@
     <center><ul class="nav nav-pills delegate-nav">
 
 <%= content_tag(:li, link_to("Main", root_path), class: cp(root_path)) %>
+   <%= content_tag(:li, link_to("Itinerary", itinerary_path), class: cp(itinerary_path)) %>
+    <%= content_tag(:li, link_to("Profile", edit_delegate_registration_path), class: cp(edit_delegate_registration_path)) %>
+   <%= content_tag(:li, link_to("Delegates", all_delegates_path), class: cp(all_delegates_path)) %>
 
   <%= content_tag(:li, link_to("Host Info", hosts_path), class: cp(hosts_path)) %>
-   <%= content_tag(:li, link_to("Itinerary", itinerary_path), class: cp(itinerary_path)) %>
 
-   <%= content_tag(:li, link_to("Delegates", all_delegates_path), class: cp(all_delegates_path)) %>
-    <%= content_tag(:li, link_to("Profile", edit_delegate_registration_path), class: cp(edit_delegate_registration_path)) %>
    
 </ul></center>
 </div>
@@ -114,12 +114,19 @@
           </li> 
 
         </ul>-->
-
-
  
     <!--<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">    -->
 
     <div class="col-md-12">
+    <% if Notice.first != nil and Notice.first.notice_message != '' %>
+<div class="alert alert-danger" role="alert">
+  
+  <h5 style="color:white" class="text-center"><%= Notice.first.notice_message %></h5>
+
+</div>
+
+<% end %>
+
       <%= yield %>
     </div>
   </div>

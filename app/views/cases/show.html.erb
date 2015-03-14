@@ -27,8 +27,7 @@
 </div>
 </div>
 <div class="row">
-<p>  <%= @case.description %></p>
-
+<p>  <%= raw @case.description %></p>
 
 <h4> Submit Case</h4>
 <%= form_for(@case, :html => { :multipart => true }) do |form| %>
