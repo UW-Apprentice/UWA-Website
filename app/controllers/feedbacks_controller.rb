@@ -75,7 +75,7 @@ before_action :authenticate_executive!, only: [:edit, :update, :destroy]
 
     if (@feedback.exec_secret == secret_key_attributes)
       eval_type = 2 # Exec feedback
-      Delegate.update_peer_or_exec_scores(2, @projected_case_id, @receiver, @feedback.leadership, @feedback.creativity, @feedback.business_sense, @feedback.presentation_skills, @feedback.overall_contribution )
+      Delegate.update_peer_or_exec_scores(2, @projected_case_id -1 , @receiver, @feedback.leadership, @feedback.creativity, @feedback.business_sense, @feedback.presentation_skills, @feedback.overall_contribution )
 
     elsif (@feedback.exec_secret == secret_key_case)
       # Leadership = impact, creativity = feasibility, business_sense = innovation, presentation_skills = presentation, overall_contribution = overall
