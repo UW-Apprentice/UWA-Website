@@ -67,7 +67,7 @@ before_action :authenticate_executive!, only: [:edit, :update, :destroy]
     @feedback.save
    # @projected_case_id = Case.where(:case_sponsor => true).where(:done => true).count + 1
     
-    @projected_case_id = Case.where(:case_sponsor => true).where(:done => true).count
+    @projected_case_id = Case.where(:case_sponsor => true).where(:done => true).count + 1
 
     @receiver = Delegate.where(:fullname => @feedback.receiver).first.id
 

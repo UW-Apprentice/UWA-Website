@@ -50,7 +50,7 @@ class CasesController < ApplicationController
     end
 
     def case_params
-      params.require(:case).permit(:title, :sponsor, :description, :document)
+      params.require(:case).permit(:title, :sponsor, :description, :document, :sponsor_logo)
     end
 
     # Don't allow delegates to access what they're not supposed to
