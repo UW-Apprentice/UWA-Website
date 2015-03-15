@@ -35,7 +35,7 @@ end
 
 
 div class: 'col-md-12' do
-   table_for Delegate.all.each, class: 'table table-condensed' do
+   table_for Delegate.all.order(total_score: :desc).each, class: 'table table-condensed' do
   column(:fullname)
   column "Competition Score",          :total_score
 end
