@@ -604,6 +604,7 @@ class Delegate < ActiveRecord::Base
   def self.conference_score()
   end
 
+
   def self.case_eval_score(impact, feasibility, innovation, presentation, overall)
   	(impact +  feasibility + innovation + presentation + overall) / @num_finished_cases
   end
